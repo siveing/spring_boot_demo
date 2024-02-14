@@ -79,6 +79,8 @@ public class UserController {
         // Update user information
         user.setName(name);
         user.setEmail(email);
+        // Set updated at to current time 
+        user.updateUpdatedAt();
         userRepository.save(user);
 
         // Return the message that data has deleted
