@@ -1,5 +1,7 @@
 package com.example.jin.models;
 
+import org.hibernate.annotations.SoftDelete;
+
 import com.example.jin.models.abstracts.TimeStampAbstract;
 
 import jakarta.persistence.Entity;
@@ -8,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
+@SoftDelete()
 public class AuthorModel extends TimeStampAbstract {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

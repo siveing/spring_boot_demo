@@ -58,6 +58,9 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public @ResponseBody String deleteUserModel(@PathVariable("id") Integer id) {
         // Remove the object
+        // UserModel user = userRepository.findById(id).orElse(null);
+        // user.markAsDeleted();
+        //  user.updateUpdatedAt();
         userRepository.deleteById(id);
         // Return the message that data has deleted
         return "Delete successfully.";
