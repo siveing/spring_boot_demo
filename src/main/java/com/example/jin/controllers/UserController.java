@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.jin.models.UserModel;
+import com.example.jin.models.User;
 import com.example.jin.repositories.UserRepository;
 
 @Controller // This means that this class is a Controller
@@ -32,7 +32,7 @@ public class UserController {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-        UserModel user = new UserModel();
+        User user = new User();
         user.setName(name);
         user.setEmail(email);
         userRepository.save(user);
@@ -43,13 +43,13 @@ public class UserController {
     }
 
     @GetMapping(path = "/all")
-    public ResponseEntity<Iterable<UserModel>> getAllUsers() {
+    public ResponseEntity<Iterable<User>> getAllUsers() {
         // This returns a JSON or XML with the users
         return ResponseEntity.ok(userRepository.findAll());
     }
 
     @GetMapping("/show/{id}")
-    public ResponseEntity<Optional<UserModel>> showUserModel(@PathVariable("id") Integer id) {
+    public ResponseEntity<Optional<User>> showUserModel(@PathVariable("id") Integer id) {
         // @PathVariable means it is a parameter from the path URI request
 
         return ResponseEntity.ok(userRepository.findById(id));
@@ -73,7 +73,7 @@ public class UserController {
             @RequestParam("email") String email) {
 
         // Check if the user exists
-        UserModel user = userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElse(null);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("User with ID " + id + " not found");
