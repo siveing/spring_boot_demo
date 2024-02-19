@@ -14,7 +14,6 @@ import com.example.jin.repositories.UserRepository;
 import com.example.jin.response.LoginResponse;
 import com.example.jin.response.RegisterResponse;
 import com.example.jin.services.JwtService;
-import com.example.jin.types.RoleType;
 import com.example.jin.types.TokenType;
 
 import lombok.AllArgsConstructor;
